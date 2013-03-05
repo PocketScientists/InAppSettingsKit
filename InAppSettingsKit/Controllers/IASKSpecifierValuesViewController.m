@@ -181,8 +181,9 @@
     [self selectCell:[tableView cellForRowAtIndexPath:indexPath]];
     [self setCheckedItem:indexPath];
 	
-    [self.settingsStore setObject:[values objectAtIndex:indexPath.row] forKey:[_currentSpecifier key]];
-	[self.settingsStore synchronize];
+    //LMG-Change: don't set the settings value here - we want check them first and set them afterwards
+    //[self.settingsStore setObject:[values objectAtIndex:indexPath.row] forKey:[_currentSpecifier key]];
+	//[self.settingsStore synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kIASKAppSettingChanged
                                                         object:[_currentSpecifier key]
                                                       userInfo:[NSDictionary dictionaryWithObject:[values objectAtIndex:indexPath.row]
